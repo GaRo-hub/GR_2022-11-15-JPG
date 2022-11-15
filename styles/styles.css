@@ -13,6 +13,9 @@ header,nav,footer{flex:1}
 #wrapper>*:nth-child(1){
     flex-grow: 1;
 }
+#is-js-joaded{
+    text-align: center;
+}
 footer{
     text-align: center;
 }
