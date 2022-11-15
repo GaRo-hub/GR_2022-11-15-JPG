@@ -1,0 +1,32 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height:95vh;
+}
+header,nav,footer{flex:1}
+#wrapper{
+    flex-grow: 1;
+    display: flex;
+    text-align:center;
+    padding: 5px 20px
+}
+#wrapper>*:nth-child(1){
+    flex-grow: 1;
+}
+footer{
+    text-align: center;
+}
+/* common classes */
+.flex-cols{
+    display: flex;
+    justify-content: space-between;
+}
+.flex-cols>*{
+    text-align: center;
+}
+.input-small-nud{
+    width:50px
+}
+.input-big-nud{
+    width:90px
+}
