@@ -1,0 +1,19 @@
+{
+  "name": "gr_2022-11-15-jpg",
+  "version": "1.0.0",
+  "description": "formation jpg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaRo-hub/GR_2022-11-15-jpg.git"
+  },
+  "author": "GaRo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaRo-hub/GR_2022-11-15-jpg/issues"
+  },
+  "homepage": "https://github.com/GaRo-hub/GR_2022-11-15-jpg#readme"
+}
