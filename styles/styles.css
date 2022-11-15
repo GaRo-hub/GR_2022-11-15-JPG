@@ -13,7 +13,7 @@ header,nav,footer{flex:1}
 #wrapper>*:nth-child(1){
     flex-grow: 1;
 }
-#is-js-joaded{
+#is-js-loaded{
     text-align: center;
 }
 footer{
@@ -32,4 +32,22 @@ footer{
 }
 .input-big-nud{
     width:90px
+}
+/* thumbnail section */
+#thumbnail{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 80vh;
+    overflow-y: scroll;
+}
+#thumbnail>.meme-thumbnail{
+    width: 32%;
+    height:200px;
+    padding:5px;
+}
+#thumbnail>.meme-thumbnail>*{
+    width: 170px;
+    height:170px;
+    size:auto;
 }
