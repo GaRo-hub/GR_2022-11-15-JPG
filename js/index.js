@@ -14,7 +14,7 @@ function loadJS(){
     */
     divIsJsLoaded.remove();
     setNavbarEvent();
-
+    loadPage('home.html');
 }
 
 document.addEventListener('DOMContentLoaded', loadJS);
