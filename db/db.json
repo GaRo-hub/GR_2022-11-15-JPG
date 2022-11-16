@@ -1,0 +1,44 @@
+{
+    "memes":[
+        {
+            "id":0,
+            "titre":"1er meme",
+            "text":"don't be pog it's over \n be sadge it happened",
+            "x":100,"y":100,
+            "fontSize":25,
+            "fontWeight":"900",
+            "underline":true,
+            "italic":true,
+            "color":"#23AB8E",
+            "imageId":0
+        },
+        {
+            "id":1,
+            "titre":"2e meme",
+            "text":"don't be sadge it's over \n be sadge it's a repost",
+            "x":100,"y":100,
+            "fontSize":25,
+            "fontWeight":"900",
+            "underline":true,
+            "italic":true,
+            "color":"#23AB8E",
+            "imageId":1
+        }
+    ],
+    "images":[
+        {
+            "id":0,
+            "titre":"sadge",
+            "href":"depressedCat.jpg",
+            "w": 1034,
+            "h": 1223
+        },
+        {
+            "id":0,
+            "titre":"sadge",
+            "href":"depressedCat.jpg",
+            "w": 1034,
+            "h": 1223
+        }
+    ]
+}
