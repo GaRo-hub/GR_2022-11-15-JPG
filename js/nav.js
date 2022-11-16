@@ -55,6 +55,9 @@ function linkThumbnailEvt(evt){
     evt.preventDefault()
     console.log('fonction thumbnail', evt)
     setActiveLinkInNavbar(evt)
+    fetch(`${REST_ADR}/memes`).then(
+        r=>r.json()
+    ).then(json=>console.log());
     loadPage('thumbnail.html');
 }
 /**
