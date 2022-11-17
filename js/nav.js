@@ -1,4 +1,21 @@
 /**
+ * function de routage des url entrées en navbar
+ * @param {object} evt event object 
+ */
+const initRoutes=(evt)=>{
+    const path = location.pathname;
+    if(path.startsWith('/thumbnail')){
+        linkThumbnailEvt(evt);
+    }
+    else if(path.startsWith('/creator')){
+        linkCreateEvt(evt);
+    }
+    else{
+        linkHomeEvt(evt);
+    }
+}
+
+/**
  * function de gestion de la navbar
  */
 function setNavbarEvent(){
@@ -11,14 +28,20 @@ function setNavbarEvent(){
  * @param {object} evt event déclencheur
  * @param {boolean} setActiveParentLi mettre le parent actif ou non
  */
-function setActiveLinkInNavbar(evt,setActiveParentLi=true){
+function setActiveLinkInNavbar(evt, setActiveParentLi = true){
     var tousLesLi = document.querySelectorAll('nav>.navbar li')
-    tousLesLi.forEach(
-            function(li){
-                li.classList.remove('active');
-            }
-        )
-    if(setActiveParentLi){evt.target.parentElement.classList.add('active')};
+    tousLesLi.forEach( (element)=>{
+            element.classList.remove('active');
+    });
+    if(setActiveParentLi){
+        const path = location.pathname;
+        if(path.startsWith('/thumbnail')){
+            document.querySelector('nav #link-thumbnail').parentElement.classList.add('active')
+        }
+        else if(path.startsWith('/creator')){
+            document.querySelector('nav #link-create').parentElement.classList.add('active')
+        }
+    }
 }
 /**
  * comportement du clic sur le lien Create
@@ -83,7 +106,8 @@ function linkThumbnailEvt(evt) {
                     const imageDuMeme = images.find(img => img.id === meme.imageId);
 
                     memeNode.querySelector('image').setAttribute('xlink:href', '/img/' + imageDuMeme.href);
-
+                    memeNode.querySelector('text').innerHTML = meme.text;
+                    
                     //ternaire    (cond)?vrai:faux;
                     const text=memeNode.querySelector('text');
                     text.style.textDecoration = meme.underline?'underline':'none';
@@ -91,6 +115,8 @@ function linkThumbnailEvt(evt) {
                     text.style.fontWeight = meme.fontWeight;
                     text.style.fontSize = meme.fontSize;
                     text.style.fill = meme.color;
+                    text.x = meme.x;
+                    text.y = meme.y;
 
                     memeNode.querySelector('svg').setAttribute('viewBox','0 0 '+imageDuMeme.w+' '+imageDuMeme.h);
                     memeNode.addEventListener('click', (evt) => {

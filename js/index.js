@@ -3,7 +3,7 @@
  * @param {string} string une valeur
  * @returns {boolean} un booléen
  */
-function loadJS(){
+function loadJS(evt){
     var divIsJsLoaded = document.querySelector("#is-js-loaded");
     console.log(divIsJsLoaded);
     /*
@@ -14,7 +14,7 @@ function loadJS(){
     */
     divIsJsLoaded.remove();
     setNavbarEvent();
-    loadPage('home.html');
+    initRoutes(evt);
 }
 
 document.addEventListener('DOMContentLoaded', loadJS);
