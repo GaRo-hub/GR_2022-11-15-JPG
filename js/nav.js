@@ -24,9 +24,11 @@ function setActiveLinkInNavbar(evt,setActiveParentLi=true){
  * comportement du clic sur le lien Create
  * @param {object} evt event déclencheur
  */
-function linkCreateEvt(evt){
+function linkCreateEvt(evt, memeId){
     // échappement du comportement par défaut de la balise déclenchant l'événement
     evt.preventDefault();
+    let urlappend = undefined===memeId?'creator':`/creator/${memeId}`
+    history.pushState('', 'creator', urlappend)
     console.log('fonction create', evt);
     setActiveLinkInNavbar(evt);
     loadPage('create.html', (nodeBase) =>{
@@ -36,6 +38,8 @@ function linkCreateEvt(evt){
                 console.log('formulaire soumis')
             })
     });
+    
+    console.log(location)
 }
 /**
  * comportement du click sur le lien Home
@@ -43,6 +47,7 @@ function linkCreateEvt(evt){
  */
 function linkHomeEvt(evt){
     evt.preventDefault()
+    history.pushState('', 'home', '/')
     console.log('fonction home', evt)
     setActiveLinkInNavbar(evt, false)
     loadPage('home.html');
@@ -51,14 +56,56 @@ function linkHomeEvt(evt){
  * comportement du clic sur le lien Thumbnail
  * @param {object} evt event déclencheur
  */
-function linkThumbnailEvt(evt){
-    evt.preventDefault()
-    console.log('fonction thumbnail', evt)
-    setActiveLinkInNavbar(evt)
-    fetch(`${REST_ADR}/memes`).then(
-        r=>r.json()
-    ).then(json=>console.log());
-    loadPage('thumbnail.html');
+function linkThumbnailEvt(evt) {
+    //echapement du comportement par defaut de la balise déclenchant l'evenement 
+    evt.preventDefault();
+    history.pushState('', 'thumbnail', '/thumbnail')
+    console.log('fonction liens thumbnail', evt);
+    setActiveLinkInNavbar(evt);
+    const primages = fetch(`${REST_ADR}/images`).then(r => r.json());
+    const prmemes = fetch(`${REST_ADR}/memes`).then(r => r.json());
+    //synchro d'execution des then de promise avec 2 promises
+    Promise.all([primages, prmemes])
+        .then(arr => {
+            images = arr[0];
+            memes = arr[1];
+            loadPage('thumbnail.html', container => {
+                //recup du model present dans la vue
+                var memeModelNode = container.querySelector('#meme-');
+                //suppr. du model vide
+                memeModelNode.remove();
+                memes.forEach(meme => {
+                    //creation d'un doublon du noeud de model
+                    const memeNode = memeModelNode.cloneNode(true);
+                    //mise en place de l'id dynamique sur le clone
+                    memeNode.id = `meme-${meme.id}`;
+
+                    const imageDuMeme = images.find(img => img.id === meme.imageId);
+
+                    memeNode.querySelector('image').setAttribute('xlink:href', '/img/' + imageDuMeme.href);
+
+                    //ternaire    (cond)?vrai:faux;
+                    const text=memeNode.querySelector('text');
+                    text.style.textDecoration = meme.underline?'underline':'none';
+                    text.style.fontStyle = meme.underline?'italic':'normal';
+                    text.style.fontWeight = meme.fontWeight;
+                    text.style.fontSize = meme.fontSize;
+                    text.style.fill = meme.color;
+
+                    memeNode.querySelector('svg').setAttribute('viewBox','0 0 '+imageDuMeme.w+' '+imageDuMeme.h);
+                    memeNode.addEventListener('click', (evt) => {
+                        linkCreateEvt(evt, meme.id);
+                    });
+
+                    //ajout du clone dans le container
+                    container.querySelector('#thumbnail').append(memeNode);
+
+                    console.log(meme, imageDuMeme);
+                });
+            });
+
+
+        });
 }
 /**
  * loader de vues
