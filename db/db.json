@@ -3,41 +3,54 @@
     {
       "id": 0,
       "titre": "1er meme",
-      "text": "don't be pog it's over \n be sadge it happened",
+      "text": "don't be pogged it's over be sadge it happened",
       "x": 100,
       "y": 100,
       "fontSize": 25,
       "fontWeight": "900",
-      "underline": true,
-      "italic": true,
+      "underline": false,
+      "italic": false,
       "color": "#23AB8E",
       "imageId": 0
     },
     {
       "id": 1,
       "titre": "2e meme",
-      "text": "don't be sadge it's over \n be sadge it's a repost",
-      "x": 100,
-      "y": 100,
-      "fontSize": 25,
+      "text": "don't be sadge it's over,<br> be sadge it's a repost",
+      "x": 10,
+      "y": 20,
+      "fontSize": 32,
       "fontWeight": "900",
-      "underline": true,
+      "underline": false,
       "italic": true,
       "color": "#23AB8E",
       "imageId": 1
     },
     {
       "titre": "3e meme",
-      "text": "don't be sadge it's over \n be pogged it's a ReSTpost",
-      "x": 100,
-      "y": 100,
+      "text": "don't be sadge it's over be pogged it's a ReSTpost",
+      "x": 20,
+      "y": 10,
       "fontSize": 25,
       "fontWeight": "900",
       "underline": true,
       "italic": true,
-      "color": "#23AB8E",
-      "imageId": 1,
+      "color": "#FF00BA",
+      "imageId": 2,
       "id": 2
+    },
+    {
+      "titre": "4e meme",
+      "text": "...",
+      "x": 20,
+      "y": 10,
+      "fontSize": 25,
+      "fontWeight": "900",
+      "underline": true,
+      "italic": true,
+      "color": "#FF00BA",
+      "imageId": 3,
+      "id": 3
     }
   ],
   "images": [
@@ -50,10 +63,24 @@
     },
     {
       "id": 1,
-      "titre": "sadge",
-      "href": "depressedCat.jpg",
-      "w": 1034,
-      "h": 1223
+      "titre": "sadgeGirl",
+      "href": "runnyIceCream.gif",
+      "w": 220,
+      "h": 391
+    },
+    {
+      "id": 2,
+      "titre": "sadgeGif",
+      "href": "depressedCatGif.gif",
+      "w": 220,
+      "h": 275
+    },
+    {
+      "id": 3,
+      "titre": "sadgeCarrousel",
+      "href": "carrouselDeath.gif",
+      "w": 200,
+      "h": 202
     }
   ]
 }
