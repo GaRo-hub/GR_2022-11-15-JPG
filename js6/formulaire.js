@@ -45,15 +45,17 @@ export default class VueFormulaire{
                 this.#currentMeme.setImage(Number(evt.target.value), images)
                 this.#renderCurrent()
             })
+
+        this.#container.querySelector("form").addEventListener(
+            "submit",
+            (evt)=>{
+                evt.preventDefault();
+                this.#currentMeme.save();
+                console.log(this.#currentMeme);
+            }
+            )
         }
-        // this.#container.querySelector(".submit").addEventListener(
-        //     "click",
-        //     (evt)=>{
-        //         evt.preventDefault();
-        //         this.#currentMeme.save();
-        //         console.log(this.#currentMeme);
-        //     }
-        //     )
+
     #loadingContent=(images)=>{
         const select=this.#container.querySelector('select');
         // multi-execution protection
