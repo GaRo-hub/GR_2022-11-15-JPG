@@ -21,6 +21,13 @@ export default class VueFormulaire{
     }
     #loadingContent=(images)=>{
         const select=this.#container.querySelector('select')
+        // multi-execution protection
+        select.innerHTML = "";
+        const noImg=document.createElement('option');
+        noImg.value = -1;
+        noImg.innerHTML='Aucune image'
+        select.append(noImg)
+        // append image options
         images.map(e=>{
             const o = document.createElement("option");
             o.value=e.id;
