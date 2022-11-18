@@ -1,4 +1,6 @@
-class Meme {
+import Image from './Image.js'
+
+export default class Meme {
     #serveurRessourceUrl = undefined;
 
     id = undefined;
@@ -57,4 +59,6 @@ class Meme {
     save = () => {
 
      }
-}
+};
+
+export const currentMeme = null;

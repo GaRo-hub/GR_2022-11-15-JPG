@@ -3,6 +3,7 @@ import REST_ADR, {CONFIG_DATA as cfdata} from "./constantes.js";
 // import * as CONST from "./constant.js";
 // CONST => default, CONST.CONFIG_DATA => CONFIG_DATA
 import './globalvars.js'; //import classique (sans gestion de module)
+import VueFormulaire from './formulaire.js'
 /**
  * function de routage des url entrées en navbar
  * @param {object} evt event object 
@@ -59,13 +60,15 @@ function linkCreateEvt(evt, memeId){
     history.pushState('', 'creator', urlappend)
     console.log('fonction create', evt);
     setActiveLinkInNavbar(evt);
-    loadPage('create.html', (nodeBase) =>{
-        var form = nodeBase.querySelector('form');
-            form.addEventListener('submit', (evt) =>{
-                evt.preventDefault();
-                console.log('formulaire soumis')
-            })
-    });
+    // loadPage('create.html', (nodeBase) =>{
+    //     var form = nodeBase.querySelector('form');
+    //         form.addEventListener('submit', (evt) =>{
+    //             evt.preventDefault();
+    //             console.log('formulaire soumis')
+    //         })
+    // });
+    const form = new VueFormulaire();
+    form.loadPage();
     
     console.log(location)
 }

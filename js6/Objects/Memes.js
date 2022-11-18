@@ -1,4 +1,7 @@
-class Memes extends Array {
+import Meme from './Meme.js'
+import REST_ADR from '../constantes.js'
+
+export default class Memes extends Array {
 
     static #restPath = '/memes';
     constructor() {
@@ -59,6 +62,17 @@ class Memes extends Array {
         return this;
     }
     /**
+     * replace content of this with this with external list
+     * @param {Memes} memesArray filled memes list array
+     */
+    replaceContentLMemesArray=(memesArray)=>{
+        this.splice(0);
+        imageArray.map(i=>{
+            this.push(i);
+        });
+        return this;
+    }
+    /**
      * get table of all render
      * @returns {Array<SVGElement>} table of svg element
      */
@@ -66,3 +80,4 @@ class Memes extends Array {
         return this.map(m=>m.renderSVG());
     }
 }
+export const memes = new Memes();

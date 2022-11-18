@@ -1,4 +1,6 @@
-class Images extends Array {
+import Image from './Image.js';
+import REST_ADR from '../constantes.js'
+export default class Images extends Array {
 
     static #restPath = '/images';
     constructor() {
@@ -15,6 +17,17 @@ class Images extends Array {
             const retList = new Images();
             return retList.convertGenericArray(arr);
         })
+    }
+    /**
+     * replace content of this with this with external list
+     * @param {Images} imageArray filled images list array
+     */
+    replaceContentImagesArray=(imageArray)=>{
+        this.splice(0);
+        imageArray.map(i=>{
+            this.push(i);
+        })
+        return this;
     }
     /**
      * get element in array by id
@@ -39,10 +52,7 @@ class Images extends Array {
         if (!Array.isArray(arr)) return;
         arr.map(e => {
             const img = new Image();
-            img.h = e.h;
-            img.w = e.w;
-            img.href = e.href;
-            img.id = e.id;
+            Object.assign(img,e)
             this.push(img);
         })
         return this;
@@ -56,12 +66,10 @@ class Images extends Array {
         if (!Array.isArray(arr)) return;
         arr.map(e => {
             const img = new Image();
-            img.h = e.h;
-            img.w = e.w;
-            img.href = e.href;
-            img.id = e.id;
+            Object.assign(img,e)
             this.push(img);
         });
         return this;
     }
-}
+};
+export const images = new Images();
